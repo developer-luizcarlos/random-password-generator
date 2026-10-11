@@ -1,0 +1,20 @@
+{
+  "author": "Luiz Carlos Lima",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "ts-loader": "^9.6.2",
+    "typescript": "^7.0.2",
+    "webpack": "^5.111.1",
+    "webpack-cli": "^7.2.3"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "./dist/bundle.js",
+  "name": "generate-random-password",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "version": "1.0.0"
+}
