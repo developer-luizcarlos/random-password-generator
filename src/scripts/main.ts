@@ -18,6 +18,12 @@ export class GeneratePassword {
 
             throw new RangeError(errMsg);
         }
+
+        if (!this.isAnyKindSet()) {
+            const errMsg = `At least one character kind must be set to be included in the generated password.`;
+
+            throw new Error(errMsg);
+        }
     }
 
     /**
@@ -65,5 +71,16 @@ export class GeneratePassword {
             included.
         */
         return this.config.length >= this.minLength;
+    }
+
+    /**
+     * Checks if at least one character kind
+     * was set to be included in the generated
+     * password.
+     */
+    private isAnyKindSet(): boolean {
+        const { lowercase, uppercase, numbers, symbols } = this.config;
+
+        return lowercase || uppercase || numbers || symbols;
     }
 }
