@@ -8,9 +8,16 @@ import getRandomArrItem from "./helpers/get-random-arr-item.ts";
  */
 export class GeneratePassword {
     private config: Config;
+    private minLength = 4;
 
     constructor(config: Config) {
         this.config = config;
+
+        if (!this.isValidLength()) {
+            const errMsg = `Password length less than minimum required of ${this.minLength} characters`;
+
+            throw new RangeError(errMsg);
+        }
     }
 
     /**
@@ -40,5 +47,23 @@ export class GeneratePassword {
         }
 
         return password.join("");
+    }
+
+    /**
+     * Checks if the configured password length is
+     * valid
+     */
+    private isValidLength(): boolean {
+        /*
+            value follows the quantity of kinds
+            of characters that could be included
+            on the generated password.
+
+            if all four kinds must be included,
+            the password length cannot be less
+            than four as not all kinds would be
+            included.
+        */
+        return this.config.length >= this.minLength;
     }
 }
